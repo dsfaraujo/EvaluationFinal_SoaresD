@@ -41,5 +41,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>MyaPapaya-Regular.ttf</string>
+		<string>english_essay.ttf</string>
+	</array>
 </dict>
 </plist>

@@ -14,6 +14,10 @@
 		9B77FC171F1D5559008BAC33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B77FC151F1D5559008BAC33 /* LaunchScreen.storyboard */; };
 		9B77FC1F1F1D5D5A008BAC33 /* pg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B77FC1E1F1D5D5A008BAC33 /* pg1.png */; };
 		9B77FC221F1D5F8E008BAC33 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B77FC211F1D5F8E008BAC33 /* logo.png */; };
+		9BCCE46A1F1EA1420069D76F /* MyaPapaya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BCCE4681F1EA1420069D76F /* MyaPapaya-Regular.ttf */; };
+		9BCCE46B1F1EA1420069D76F /* english_essay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BCCE4691F1EA1420069D76F /* english_essay.ttf */; };
+		9BCCE46E1F1EA3F90069D76F /* pg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCCE46D1F1EA3F90069D76F /* pg2.png */; };
+		9BCCE4701F1EAC830069D76F /* ChecklistData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCE46F1F1EAC830069D76F /* ChecklistData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		9B77FC181F1D5559008BAC33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B77FC1E1F1D5D5A008BAC33 /* pg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pg1.png; path = Images/pg1.png; sourceTree = "<group>"; };
 		9B77FC211F1D5F8E008BAC33 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Images/logo.png; sourceTree = "<group>"; };
+		9BCCE4681F1EA1420069D76F /* MyaPapaya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyaPapaya-Regular.ttf"; path = "Fonts/MyaPapaya-Regular.ttf"; sourceTree = "<group>"; };
+		9BCCE4691F1EA1420069D76F /* english_essay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = english_essay.ttf; path = Fonts/english_essay.ttf; sourceTree = "<group>"; };
+		9BCCE46D1F1EA3F90069D76F /* pg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pg2.png; path = Images/pg2.png; sourceTree = "<group>"; };
+		9BCCE46F1F1EAC830069D76F /* ChecklistData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +66,11 @@
 		9B77FC0B1F1D5559008BAC33 /* EvaluationFinal_SoaresD */ = {
 			isa = PBXGroup;
 			children = (
+				9BCCE46C1F1EA14C0069D76F /* Fonts */,
 				9B77FC201F1D5D5E008BAC33 /* Images */,
 				9B77FC0C1F1D5559008BAC33 /* AppDelegate.swift */,
 				9B77FC0E1F1D5559008BAC33 /* ViewController.swift */,
+				9BCCE46F1F1EAC830069D76F /* ChecklistData.swift */,
 				9B77FC101F1D5559008BAC33 /* Main.storyboard */,
 				9B77FC131F1D5559008BAC33 /* Assets.xcassets */,
 				9B77FC151F1D5559008BAC33 /* LaunchScreen.storyboard */,
@@ -72,10 +82,20 @@
 		9B77FC201F1D5D5E008BAC33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9BCCE46D1F1EA3F90069D76F /* pg2.png */,
 				9B77FC211F1D5F8E008BAC33 /* logo.png */,
 				9B77FC1E1F1D5D5A008BAC33 /* pg1.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		9BCCE46C1F1EA14C0069D76F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9BCCE4681F1EA1420069D76F /* MyaPapaya-Regular.ttf */,
+				9BCCE4691F1EA1420069D76F /* english_essay.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +161,11 @@
 				9B77FC171F1D5559008BAC33 /* LaunchScreen.storyboard in Resources */,
 				9B77FC221F1D5F8E008BAC33 /* logo.png in Resources */,
 				9B77FC141F1D5559008BAC33 /* Assets.xcassets in Resources */,
+				9BCCE46E1F1EA3F90069D76F /* pg2.png in Resources */,
+				9BCCE46A1F1EA1420069D76F /* MyaPapaya-Regular.ttf in Resources */,
 				9B77FC1F1F1D5D5A008BAC33 /* pg1.png in Resources */,
 				9B77FC121F1D5559008BAC33 /* Main.storyboard in Resources */,
+				9BCCE46B1F1EA1420069D76F /* english_essay.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +178,7 @@
 			files = (
 				9B77FC0F1F1D5559008BAC33 /* ViewController.swift in Sources */,
 				9B77FC0D1F1D5559008BAC33 /* AppDelegate.swift in Sources */,
+				9BCCE4701F1EAC830069D76F /* ChecklistData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +342,7 @@
 				9B77FC1D1F1D5559008BAC33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
