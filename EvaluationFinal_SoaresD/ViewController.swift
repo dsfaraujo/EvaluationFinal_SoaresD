@@ -36,7 +36,35 @@ class ViewController: UIViewController {
     func resetFields() {
         addTaskField.text = ""
     }
+    //------------------------------------------
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.backgroundColor = UIColor.clear
+        return obj.list.count
+    }
+    //------------------------------------------
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
+        let a = obj.list[indexPath.row]
+        let s = "\(a)"
+        cell.textLabel!.text = s
+        cell.textLabel?.textColor = UIColor.white
+        cell.backgroundColor = UIColor.clear
+        return cell
+    }
+    //------------------------------------------
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.darkGray
+    }
+    //------------------------------------------
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            obj.list[indexPath.row] != nil
+            obj.saveUserDefaults()
+           
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
     
-
 }
 
