@@ -9,28 +9,41 @@
 import UIKit
 //-----------------------------------------
 class ChecklistData {
-    //-----------------------------------------
-    var list: [String] = []
-    var userDefaults = UserDefaults.standard
-    //-----------------------------------------
-    init() {
-       manageUserDefaults()
+//------------------------------------------
+var lesNotes: [String : [String]] = ["zzz": ["aaa", "bbbb"]]
+var keys: [String] = []
+var values: [String] = []
+var userDefaults = UserDefaults.standard
+//------------------------------------------
+init() {
+    manageUserDefaults()
+    parseDict()
+}
+//------------------------------------------
+func manageUserDefaults() {
+    if let savedData = userDefaults.object(forKey: "data"){
+        lesNotes = savedData as! [String : [String]]
     }
-    //-----------------------------------------
-    func manageUserDefaults(){
-        if let savedData = userDefaults.object(forKey: "data"){
-            list = [savedData as! String]
-        }
-        else{
-            userDefaults.set(list, forKey: "data")
-        }
+    else{
+        userDefaults.set(lesNotes, forKey: "data")
     }
-    //------------------------------------------
-    func saveUserDefaults(){
-        userDefaults.set(list, forKey: "data")
+}
+//------------------------------------------
+func saveUserDefaults(){
+    userDefaults.set(lesNotes, forKey: "data")
+}
+//------------------------------------------
+func ajouterUneNote(nom: String, date: String) {
+    lesNotes["data"] = [nom, date]
+}
+//------------------------------------------
+func parseDict() {
+    keys = []
+    values = []
+    for (a, b) in lesNotes {
+        keys.append(a)
+        values.append(b[0])
     }
-    //------------------------------------------
-    func addList(toDo: String){
-        list += [toDo]
-    }
+}
+//------------------------------------------
 }
