@@ -32,7 +32,7 @@ class ViewControllerList: UIViewController{
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
         let a = obj.keys[indexPath.row]
         let b = obj.values[indexPath.row]
-        let s = "\(a) : \(b) "
+        let s = "\(a) "
         cell.textLabel!.text = s
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear

@@ -11,13 +11,14 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //-----------------------------------------
     @IBOutlet weak var addTaskField: UITextField!
-
-    @IBOutlet weak var addDate: UITextField!
     @IBOutlet weak var tableView: UITableView!
     var obj = ChecklistData()
+    var aDict: [String: Bool] = ["String 1" : false, "String 2" : false, "String 3" : false]
     //-----------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(obj.lesNotes)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     //-----------------------------------------
@@ -27,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //-----------------------------------------
     @IBAction func addTaskButton(_ sender: UIButton){
-        obj.ajouterUneNote(nom: addTaskField.text!, date: addDate.text!)
+        obj.ajouterUneNote(nom: addTaskField.text!, val: false)
         
         obj.saveUserDefaults()
         obj.parseDict()
@@ -38,13 +39,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //-----------------------------------------
     func hideKeyboard() {
         addTaskField.resignFirstResponder()
-        addDate.resignFirstResponder()
     }
     //-----------------------------------------
     func resetFields() {
         addTaskField.text = ""
-        addDate.text = ""
     }
+    
+    //---------------------
+    /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.backgroundColor = UIColor.clear
+        return aDict.count
+    }
+    //---------------------
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
+        cell.textLabel!.text = Array(aDict.keys)[indexPath.row]
+        cell.textLabel!.textColor = UIColor.black
+        cell.backgroundColor = UIColor.clear
+        
+        return cell
+    }
+    //---------------------
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if Array(aDict.values)[indexPath.row] {
+            cell.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }
+    }
+    //---------------------
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            let elimine = Array(aDict.keys)[indexPath.row]
+            aDict[elimine] = nil
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
+    //---------------------
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.darkGray
+        if !Array(aDict.values)[indexPath.row] {
+            aDict[Array(aDict.keys)[indexPath.row]] = true
+        } else {
+            aDict[Array(aDict.keys)[indexPath.row]] = false
+        }
+        tableView.reloadData()
+    }*/
+    
     //------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
@@ -55,7 +96,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
         let a = obj.keys[indexPath.row]
         let b = obj.values[indexPath.row]
-        let s = "\(a) : \(b) "
+        let s = "\(a) "
         cell.textLabel!.text = s
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear

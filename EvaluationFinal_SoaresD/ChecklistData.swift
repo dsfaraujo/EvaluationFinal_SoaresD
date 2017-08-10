@@ -10,7 +10,7 @@ import UIKit
 //-----------------------------------------
 class ChecklistData {
 //------------------------------------------
-var lesNotes: [String : [String]] = ["zzz": ["aaa", "bbbb"]]
+var lesNotes: [String : Bool] = ["a" : false]
 var keys: [String] = []
 var values: [String] = []
 var userDefaults = UserDefaults.standard
@@ -21,8 +21,9 @@ init() {
 }
 //------------------------------------------
 func manageUserDefaults() {
+    
     if let savedData = userDefaults.object(forKey: "data"){
-        lesNotes = savedData as! [String : [String]]
+        lesNotes = savedData as! [String : Bool]
     }
     else{
         userDefaults.set(lesNotes, forKey: "data")
@@ -33,8 +34,8 @@ func saveUserDefaults(){
     userDefaults.set(lesNotes, forKey: "data")
 }
 //------------------------------------------
-func ajouterUneNote(nom: String, date: String) {
-    lesNotes[date] = [nom, date]
+func ajouterUneNote(nom: String, val: Bool) {
+    lesNotes[nom] = val
 }
 //------------------------------------------
 func parseDict() {
@@ -42,7 +43,7 @@ func parseDict() {
     values = []
     for (a, b) in lesNotes {
         keys.append(a)
-        values.append(b[0])
+        values.append(b.description)
     }
 }
 //------------------------------------------
