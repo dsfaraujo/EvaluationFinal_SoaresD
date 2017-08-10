@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B5A32081F3CE78800CAC48E /* ViewControllerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5A32071F3CE78800CAC48E /* ViewControllerList.swift */; };
 		9B77FC0D1F1D5559008BAC33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77FC0C1F1D5559008BAC33 /* AppDelegate.swift */; };
 		9B77FC0F1F1D5559008BAC33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77FC0E1F1D5559008BAC33 /* ViewController.swift */; };
 		9B77FC121F1D5559008BAC33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B77FC101F1D5559008BAC33 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B5A32071F3CE78800CAC48E /* ViewControllerList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerList.swift; sourceTree = "<group>"; };
 		9B77FC091F1D5559008BAC33 /* EvaluationFinal_SoaresD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EvaluationFinal_SoaresD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B77FC0C1F1D5559008BAC33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B77FC0E1F1D5559008BAC33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				9B77FC201F1D5D5E008BAC33 /* Images */,
 				9B77FC0C1F1D5559008BAC33 /* AppDelegate.swift */,
 				9B77FC0E1F1D5559008BAC33 /* ViewController.swift */,
+				9B5A32071F3CE78800CAC48E /* ViewControllerList.swift */,
 				9BCCE46F1F1EAC830069D76F /* ChecklistData.swift */,
 				9B77FC101F1D5559008BAC33 /* Main.storyboard */,
 				9B77FC131F1D5559008BAC33 /* Assets.xcassets */,
@@ -178,6 +181,7 @@
 			files = (
 				9B77FC0F1F1D5559008BAC33 /* ViewController.swift in Sources */,
 				9B77FC0D1F1D5559008BAC33 /* AppDelegate.swift in Sources */,
+				9B5A32081F3CE78800CAC48E /* ViewControllerList.swift in Sources */,
 				9BCCE4701F1EAC830069D76F /* ChecklistData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

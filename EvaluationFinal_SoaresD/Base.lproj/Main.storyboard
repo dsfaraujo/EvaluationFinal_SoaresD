@@ -57,6 +57,9 @@
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sabeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6rj-3l-WDs"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTD-2L-Nmh">
                                                 <rect key="frame" x="174" y="0.0" width="164" height="40"/>
@@ -66,6 +69,9 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="loadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y3B-vY-i1D"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -99,7 +105,7 @@
                                     <constraint firstAttribute="height" constant="90" id="90z-Eh-0W3"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lmY-Qt-R9s">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Event" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lmY-Qt-R9s">
                                 <rect key="frame" x="16" y="116" width="324" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="324" id="55a-Gd-JKk"/>
@@ -135,7 +141,7 @@
                                     <action selector="addTaskButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O9K-M2-yiG"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z4A-f1-A0z">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Date" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z4A-f1-A0z">
                                 <rect key="frame" x="16" y="154" width="324" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="324" id="5Pl-I6-h4Y"/>
@@ -205,18 +211,18 @@
                                     <constraint firstAttribute="width" secondItem="YAf-Ju-RcZ" secondAttribute="height" multiplier="4:1" id="XGC-8C-FLy"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kFp-0H-55M">
-                                <rect key="frame" x="11" y="107" width="325" height="498"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4px-FD-L8w">
+                                <rect key="frame" x="16" y="112" width="322" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="kFp-0H-55M" secondAttribute="height" multiplier="325:456" constant="-29.934210526315837" id="SED-qn-7XE"/>
-                                    <constraint firstAttribute="width" constant="325" id="ky0-CV-Uwf"/>
+                                    <constraint firstAttribute="width" secondItem="4px-FD-L8w" secondAttribute="height" multiplier="161:244" constant="18.47540983606558" id="7r7-AC-Wad"/>
+                                    <constraint firstAttribute="width" constant="322" id="U8E-tv-66a"/>
                                 </constraints>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-6A-fd8">
-                                <rect key="frame" x="310" y="613" width="42" height="20"/>
+                                <rect key="frame" x="311" y="580" width="42" height="17"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="4Nj-6A-fd8" secondAttribute="height" multiplier="21:10" id="Sxw-Oj-Cxh"/>
+                                    <constraint firstAttribute="width" secondItem="4Nj-6A-fd8" secondAttribute="height" multiplier="21:10" constant="6.2999999999999972" id="Sxw-Oj-Cxh"/>
                                     <constraint firstAttribute="width" constant="42" id="ZSj-wi-kVe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -230,16 +236,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4Nj-6A-fd8" firstAttribute="bottom" secondItem="kFp-0H-55M" secondAttribute="bottom" constant="28" id="6lC-jT-avm"/>
+                            <constraint firstAttribute="bottom" secondItem="4Nj-6A-fd8" secondAttribute="bottom" constant="70" id="7xL-qI-hkg"/>
                             <constraint firstItem="h4r-w8-fZH" firstAttribute="top" secondItem="tLL-14-39j" secondAttribute="top" id="8sB-8Q-tn8"/>
+                            <constraint firstItem="4px-FD-L8w" firstAttribute="centerX" secondItem="tLL-14-39j" secondAttribute="centerX" constant="-10.5" id="FJY-9t-AK4"/>
                             <constraint firstItem="h4r-w8-fZH" firstAttribute="centerX" secondItem="tLL-14-39j" secondAttribute="centerX" id="PDA-e2-epv"/>
                             <constraint firstItem="YAf-Ju-RcZ" firstAttribute="centerX" secondItem="tLL-14-39j" secondAttribute="centerX" id="Sbq-LR-bvl"/>
                             <constraint firstItem="h4r-w8-fZH" firstAttribute="leading" secondItem="tLL-14-39j" secondAttribute="leading" id="WR4-vC-zza"/>
+                            <constraint firstItem="4px-FD-L8w" firstAttribute="top" secondItem="YAf-Ju-RcZ" secondAttribute="bottom" constant="32" id="ekJ-en-eZ0"/>
                             <constraint firstAttribute="trailing" secondItem="h4r-w8-fZH" secondAttribute="trailing" id="jMZ-ww-ztU"/>
                             <constraint firstItem="YAf-Ju-RcZ" firstAttribute="top" secondItem="hqr-yZ-7JR" secondAttribute="bottom" id="jSu-wT-lCq"/>
-                            <constraint firstItem="kFp-0H-55M" firstAttribute="top" secondItem="YAf-Ju-RcZ" secondAttribute="bottom" constant="27" id="k8j-al-4Ir"/>
-                            <constraint firstItem="4Nj-6A-fd8" firstAttribute="trailing" secondItem="tLL-14-39j" secondAttribute="trailingMargin" constant="-7" id="liU-ox-DHa"/>
-                            <constraint firstItem="kFp-0H-55M" firstAttribute="centerX" secondItem="tLL-14-39j" secondAttribute="centerX" constant="-14" id="y4N-sA-Tvx"/>
+                            <constraint firstItem="4Nj-6A-fd8" firstAttribute="trailing" secondItem="tLL-14-39j" secondAttribute="trailingMargin" constant="-6" id="liU-ox-DHa"/>
                         </constraints>
                     </view>
                 </viewController>

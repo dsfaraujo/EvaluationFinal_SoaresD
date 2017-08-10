@@ -34,7 +34,7 @@ func saveUserDefaults(){
 }
 //------------------------------------------
 func ajouterUneNote(nom: String, date: String) {
-    lesNotes["data"] = [nom, date]
+    lesNotes[date] = [nom, date]
 }
 //------------------------------------------
 func parseDict() {
