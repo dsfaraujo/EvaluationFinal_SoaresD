@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ViewControllerList: UIViewController{
+class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
+    @IBOutlet weak var tableView: UITableView!
     var obj = ChecklistData()
     
 
@@ -42,10 +43,21 @@ class ViewControllerList: UIViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.darkGray
+        if obj.lesNotes[obj.values[indexPath.row]]!{
+            obj.lesNotes[obj.keys[indexPath.row]] = true
+        } else {
+            obj.lesNotes[obj.keys[indexPath.row]] = false
+        }
+        tableView.reloadData()
     }
     //------------------------------------------
-    
-    //------------------------------------------
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            obj.lesNotes[obj.keys[indexPath.row]] = nil
+            obj.saveUserDefaults()
+            obj.parseDict()
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
     
 }

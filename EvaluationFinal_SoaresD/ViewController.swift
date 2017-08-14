@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var addTaskField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     var obj = ChecklistData()
-    var aDict: [String: Bool] = ["String 1" : false, "String 2" : false, "String 3" : false]
+   
     //-----------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,47 +45,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         addTaskField.text = ""
     }
     
-    //---------------------
-    /*func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.backgroundColor = UIColor.clear
-        return aDict.count
-    }
-    //---------------------
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
-        cell.textLabel!.text = Array(aDict.keys)[indexPath.row]
-        cell.textLabel!.textColor = UIColor.black
-        cell.backgroundColor = UIColor.clear
-        
-        return cell
-    }
-    //---------------------
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if Array(aDict.values)[indexPath.row] {
-            cell.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        }
-    }
-    //---------------------
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            let elimine = Array(aDict.keys)[indexPath.row]
-            aDict[elimine] = nil
-            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
-        }
-    }
-    //---------------------
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
-        selectedCell.contentView.backgroundColor = UIColor.darkGray
-        if !Array(aDict.values)[indexPath.row] {
-            aDict[Array(aDict.keys)[indexPath.row]] = true
-        } else {
-            aDict[Array(aDict.keys)[indexPath.row]] = false
-        }
-        tableView.reloadData()
-    }*/
-    
     //------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
@@ -106,6 +65,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.darkGray
+        if obj.lesNotes[obj.values[indexPath.row]]!{
+             obj.lesNotes[obj.keys[indexPath.row]] = true
+        } else {
+             obj.lesNotes[obj.keys[indexPath.row]] = false
+        }
+        tableView.reloadData()
     }
     //------------------------------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -130,10 +95,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //------------------------------------------
     @IBAction func sabeButton(_ sender: UIButton) {
-        let dictionary = obj.lesNotes
-        print(dictionary)
-        var urlToSend = "http://localhost/dashboard/soares/json_php/add.php?json=["
+        let dictionary = ["a Key" : "aValue", "other Key" : "otherValue"]
+        var urlToSend = "http://localhost/dashboard/geneau/json_php/add.php?json=["
         var counter = 0
+        
+        
         let total = dictionary.count
         for (a, b) in dictionary {
             let noSpaces = replaceChars(originalStr: a, what: " ", byWhat: "_")
@@ -146,6 +112,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         urlToSend += "]"
         
+        
         let session = URLSession.shared
         let urlString = urlToSend
         let url = NSURL(string: urlString)
@@ -155,10 +122,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         dataTask.resume()
     }
-    //------------------------------------------
+  
+    
     func replaceChars(originalStr: String, what: String, byWhat: String) -> String {
         return originalStr.replacingOccurrences(of: what, with: byWhat)
     }
+    
     //------------------------------------------
     @IBAction func loadButton(_ sender: UIButton) {
         let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/soares/json_php/data.json")!
@@ -178,6 +147,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let json = try JSONSerialization.jsonObject(with:
                         data!, options:.allowFragments)
                     print(json)
+                                      
+                    
                 }catch {
                     print("Erreur Json: \(error)")
                 }
@@ -185,6 +156,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         task.resume()
     }
+  
+    
     
     
 }

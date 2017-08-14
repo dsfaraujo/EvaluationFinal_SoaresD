@@ -172,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller List-->
         <scene sceneID="xJZ-rn-q61">
             <objects>
-                <viewController id="8NW-DA-PUb" sceneMemberID="viewController">
+                <viewController id="8NW-DA-PUb" customClass="ViewControllerList" customModule="EvaluationFinal_SoaresD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hqr-yZ-7JR"/>
                         <viewControllerLayoutGuide type="bottom" id="hzZ-uE-EcM"/>
@@ -205,6 +205,10 @@
                                     <constraint firstAttribute="width" secondItem="4px-FD-L8w" secondAttribute="height" multiplier="161:244" constant="18.47540983606558" id="7r7-AC-Wad"/>
                                     <constraint firstAttribute="width" constant="322" id="U8E-tv-66a"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="8NW-DA-PUb" id="spe-Zq-NlN"/>
+                                    <outlet property="delegate" destination="8NW-DA-PUb" id="GDQ-Re-TeM"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-6A-fd8">
                                 <rect key="frame" x="311" y="580" width="42" height="17"/>
@@ -235,6 +239,9 @@
                             <constraint firstItem="4Nj-6A-fd8" firstAttribute="trailing" secondItem="tLL-14-39j" secondAttribute="trailingMargin" constant="-6" id="liU-ox-DHa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="4px-FD-L8w" id="j4s-aW-LPp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkC-bP-JJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
