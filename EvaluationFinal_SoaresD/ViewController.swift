@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //-----------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(obj.lesNotes)
+        //print(obj.lesNotes)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -67,6 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         selectedCell.contentView.backgroundColor = UIColor.darkGray
         if obj.lesNotes[obj.values[indexPath.row]]!{
              obj.lesNotes[obj.keys[indexPath.row]] = true
+            print(obj.lesNotes[obj.keys[indexPath.row]])
         } else {
              obj.lesNotes[obj.keys[indexPath.row]] = false
         }
@@ -95,10 +96,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //------------------------------------------
     @IBAction func sabeButton(_ sender: UIButton) {
-        let dictionary = ["a Key" : "aValue", "other Key" : "otherValue"]
-        var urlToSend = "http://localhost/dashboard/geneau/json_php/add.php?json=["
+        print(obj.lesNotes)
+        let dictionary = obj.lesNotes
+        var urlToSend = "http://localhost/dashboard/soares/json_php/add.php?json=["
+        //var urlToSend = "http://localhost/dashboard/geneau/poo2/add.php?json=["
         var counter = 0
-        
         
         let total = dictionary.count
         for (a, b) in dictionary {
@@ -122,7 +124,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         dataTask.resume()
     }
-  
+
     
     func replaceChars(originalStr: String, what: String, byWhat: String) -> String {
         return originalStr.replacingOccurrences(of: what, with: byWhat)
@@ -131,6 +133,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //------------------------------------------
     @IBAction func loadButton(_ sender: UIButton) {
         let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/soares/json_php/data.json")!
+        //let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/geneau/poo2/data.json")!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url:
             requestURL as URL)
         let session = URLSession.shared
@@ -147,9 +150,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let json = try JSONSerialization.jsonObject(with:
                         data!, options:.allowFragments)
                     print(json)
-                                      
                     
-                }catch {
+                    var dict : [String: String]
+                    var keys: [String] = []
+                    var values: [Bool] = []
+                    for (k, v) in json as! [String : String] {
+                        if v == "false"{
+                            values.append(false)
+                        }
+                        else{
+                            values.append(true)
+                        }
+                        
+                    }
+                   self.obj.lesNotes = json as! [String : Bool]
+                    
+                }
+                    catch {
                     print("Erreur Json: \(error)")
                 }
             }
