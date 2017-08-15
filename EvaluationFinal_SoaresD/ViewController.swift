@@ -19,6 +19,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         //print(obj.lesNotes)
         
+         //print(obj.lesNotes[obj.keys[0]]!)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     //-----------------------------------------
@@ -63,14 +65,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //------------------------------------------
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.darkGray
-        if obj.lesNotes[obj.values[indexPath.row]]!{
+        if obj.lesNotes[obj.keys[indexPath.row]]! == false{
              obj.lesNotes[obj.keys[indexPath.row]] = true
-            print(obj.lesNotes[obj.keys[indexPath.row]])
+            //print(obj.lesNotes[obj.keys[indexPath.row]])
         } else {
              obj.lesNotes[obj.keys[indexPath.row]] = false
         }
+        obj.parseDict()
+        print(obj.values)
+        
         tableView.reloadData()
     }
     //------------------------------------------
@@ -78,7 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if editingStyle == UITableViewCellEditingStyle.delete {
             obj.lesNotes[obj.keys[indexPath.row]] = nil
             obj.saveUserDefaults()
-            obj.parseDict()
+            
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
     }
@@ -151,20 +157,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         data!, options:.allowFragments)
                     print(json)
                     
-                    var dict : [String: String]
+                    var dict : [String: Bool] = [ : ]
                     var keys: [String] = []
                     var values: [Bool] = []
                     for (k, v) in json as! [String : String] {
+                        keys.append(k)
                         if v == "false"{
                             values.append(false)
                         }
                         else{
                             values.append(true)
                         }
-                        
                     }
-                   self.obj.lesNotes = json as! [String : Bool]
+                    var index = 0
+                    for key in keys {
+                        for _ in values{
+                        dict[key] = values[index]
+                        }
+                       self.obj.ajouterUneNote(nom: key, val: false)
+                        index+=1
+                    }
                     
+                    
+                    self.tableView.reloadData()
                 }
                     catch {
                     print("Erreur Json: \(error)")

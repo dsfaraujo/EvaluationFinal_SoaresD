@@ -31,32 +31,40 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     //------------------------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
-        let a = obj.keys[indexPath.row]
-        let b = obj.values[indexPath.row]
-        let s = "\(a) "
-        cell.textLabel!.text = s
+            if obj.keys == ["true"] {
+            let b = obj.values[indexPath.row]
+            let a = obj.keys[indexPath.row]
+            let s = "\(a) "
+            cell.textLabel!.text = s
+                print(a)
+            
+        }
+        
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear
         return cell
+       
     }
-    //------------------------------------------
+    //---------------------
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.darkGray
-        if obj.lesNotes[obj.values[indexPath.row]]!{
-            obj.lesNotes[obj.keys[indexPath.row]] = true
-        } else {
-            obj.lesNotes[obj.keys[indexPath.row]] = false
+        if obj.lesNotes[obj.keys[indexPath.row]]! == false{
+        print(obj.values)
         }
+     
         tableView.reloadData()
     }
     //------------------------------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
+            
             obj.lesNotes[obj.keys[indexPath.row]] = nil
             obj.saveUserDefaults()
             obj.parseDict()
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+            
         }
     }
     
