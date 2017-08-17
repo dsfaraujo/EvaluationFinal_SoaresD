@@ -187,8 +187,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     print(dict)
                     self.obj.lesNotes = dict
-                    self.tableView.reloadData()
-                     self.viewDidLoad()
+                    //self.tableView.reloadData()
+                    
                 }
                     catch {
                     print("Erreur Json: \(error)")
@@ -198,6 +198,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         task.resume()
         obj.saveUserDefaults()
         obj.parseDict()
+        
+        self.viewDidLoad()
         tableView.reloadData()
         print(obj.lesNotes)
        
