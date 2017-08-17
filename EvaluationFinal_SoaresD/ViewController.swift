@@ -76,16 +76,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         obj.parseDict()
         print(obj.values)
-        
+        obj.saveUserDefaults()
         tableView.reloadData()
     }
     //------------------------------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             obj.lesNotes[obj.keys[indexPath.row]] = nil
+            obj.parseDict()
             obj.saveUserDefaults()
-            
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if obj.values[indexPath.row]  {
+            cell.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
     }
     //------------------------------------------
@@ -129,6 +134,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             (data:Data?, response:URLResponse?, error:Error?) -> Void in
         }
         dataTask.resume()
+        obj.saveUserDefaults()
+        obj.parseDict()
+
     }
 
     
@@ -177,9 +185,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                        self.obj.ajouterUneNote(nom: key, val: false)
                         index+=1
                     }
-                    
-                    
+                    print(dict)
+                    self.obj.lesNotes = dict
                     self.tableView.reloadData()
+                     self.viewDidLoad()
                 }
                     catch {
                     print("Erreur Json: \(error)")
@@ -187,6 +196,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         task.resume()
+        obj.saveUserDefaults()
+        obj.parseDict()
+        tableView.reloadData()
+        print(obj.lesNotes)
+       
+
     }
   
     

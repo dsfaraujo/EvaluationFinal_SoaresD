@@ -12,7 +12,7 @@ class ChecklistData {
 //------------------------------------------
 var lesNotes: [String : Bool] = ["a" : false]
 var keys: [String] = []
-var values: [String] = []
+var values: [Bool] = []
 var userDefaults = UserDefaults.standard
 //------------------------------------------
 init() {
@@ -43,7 +43,7 @@ func parseDict() {
     values = []
     for (a, b) in lesNotes {
         keys.append(a)
-        values.append(b.description)
+        values.append(b)
     }
 }
 //------------------------------------------

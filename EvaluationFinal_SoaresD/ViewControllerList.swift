@@ -16,6 +16,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     //-----------------------------------------
@@ -31,31 +32,32 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     //------------------------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
-            if obj.keys == ["true"] {
-            let b = obj.values[indexPath.row]
-            let a = obj.keys[indexPath.row]
+        let a = obj.keys[indexPath.row]
+        let b = obj.values[indexPath.row]
+        if b == true{
             let s = "\(a) "
             cell.textLabel!.text = s
-                print(a)
-            
+            cell.textLabel?.textColor = UIColor.black
+            cell.backgroundColor = UIColor.clear
         }
-        
+        /*let s = "\(a) "
+        cell.textLabel!.text = s
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear
-        return cell
-       
+        return cell*/
+       return cell
     }
     //---------------------
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.darkGray
-        if obj.lesNotes[obj.keys[indexPath.row]]! == false{
-        print(obj.values)
+        if obj.lesNotes[obj.keys[indexPath.row]]! == true {
+            print(obj.values)
         }
      
         tableView.reloadData()
-    }
+    }*/
     //------------------------------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
