@@ -17,10 +17,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //-----------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(obj.lesNotes)
-        
-         //print(obj.lesNotes[obj.keys[0]]!)
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
     //-----------------------------------------
@@ -136,6 +132,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dataTask.resume()
         obj.saveUserDefaults()
         obj.parseDict()
+        
+        // create the alert
+        let alert = UIAlertController(title: "Saved", message: "Your tasks were successfully saved", preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+   
 
     }
 
@@ -161,7 +167,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if (statusCode == 200) {
                 print("Tout fonctionne correctement...")
                 do{
-                    let json = try JSONSerialization.jsonObject(with:
+                    var json: Any? = nil
+                    json = try JSONSerialization.jsonObject(with:
                         data!, options:.allowFragments)
                     print(json)
                     
@@ -187,7 +194,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     print(dict)
                     self.obj.lesNotes = dict
-                    //self.tableView.reloadData()
+                    self.obj.saveUserDefaults()
+                    self.obj.parseDict()
+                    self.tableView.reloadData()
+                    self.resetFields()
+                    
                     
                 }
                     catch {
@@ -195,17 +206,43 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
+        //obj.saveUserDefaults()
+       // obj.parseDict()
+        //self.tableView.reloadData()
         task.resume()
-        obj.saveUserDefaults()
-        obj.parseDict()
+        //tableView.reloadData()
         
-        self.viewDidLoad()
-        tableView.reloadData()
+        
+        //self.viewDidLoad()
+        
         print(obj.lesNotes)
        
 
     }
   
+
+    @IBAction func resetButton(_ sender: UIButton) {
+        
+    
+        var refreshAlert = UIAlertController(title: "Reset data?", message: "All data will be lost.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            self.obj.resetData()
+            self.obj.saveUserDefaults()
+            self.obj.parseDict()
+            self.tableView.reloadData()
+            self.resetFields()
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+        
+        
+        
+    }
     
     
     

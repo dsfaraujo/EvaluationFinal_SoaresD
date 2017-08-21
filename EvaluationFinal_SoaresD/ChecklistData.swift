@@ -47,4 +47,9 @@ func parseDict() {
     }
 }
 //------------------------------------------
+    
+    func resetData() {
+        lesNotes = [ : ]
+        saveUserDefaults()
+    }
 }

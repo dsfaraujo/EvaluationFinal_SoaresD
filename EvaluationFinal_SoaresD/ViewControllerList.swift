@@ -40,11 +40,6 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
             cell.textLabel?.textColor = UIColor.black
             cell.backgroundColor = UIColor.clear
         }
-        /*let s = "\(a) "
-        cell.textLabel!.text = s
-        cell.textLabel?.textColor = UIColor.black
-        cell.backgroundColor = UIColor.clear
-        return cell*/
        return cell
     }
     //---------------------

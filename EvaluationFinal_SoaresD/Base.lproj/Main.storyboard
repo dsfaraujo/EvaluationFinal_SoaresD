@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -86,6 +86,9 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V4K-ze-MFl"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpa-pJ-aKC">
                                                 <rect key="frame" x="174" y="0.0" width="164" height="40"/>
@@ -116,10 +119,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Dc-Fh-IfN">
-                                <rect key="frame" x="16" y="179" width="324" height="356"/>
+                                <rect key="frame" x="16" y="179" width="324" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="4Dc-Fh-IfN" secondAttribute="height" multiplier="81:83" constant="-23.421686746987973" id="cJv-Te-jHl"/>
+                                    <constraint firstAttribute="width" secondItem="4Dc-Fh-IfN" secondAttribute="height" multiplier="81:83" constant="-3.9036144578313383" id="cJv-Te-jHl"/>
                                     <constraint firstAttribute="width" constant="324" id="cvb-TX-zFJ"/>
                                 </constraints>
                                 <connections>
@@ -127,15 +130,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9QH-s8-IYW"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4k-JX-lg0">
-                                <rect key="frame" x="255" y="154" width="85" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4k-JX-lg0">
+                                <rect key="frame" x="271" y="154" width="69" height="24"/>
+                                <color key="backgroundColor" red="1" green="0.13621322979406147" blue="0.11456111017308079" alpha="0.14566271551724139" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="b4k-JX-lg0" secondAttribute="height" multiplier="17:6" constant="17" id="Vuq-Vl-IaF"/>
-                                    <constraint firstAttribute="width" constant="85" id="sQ6-Uw-xrV"/>
+                                    <constraint firstAttribute="width" secondItem="b4k-JX-lg0" secondAttribute="height" multiplier="17:6" constant="1" id="Vuq-Vl-IaF"/>
+                                    <constraint firstAttribute="width" constant="69" id="sQ6-Uw-xrV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MyaPapaya" family="Mya Papaya" pointSize="17"/>
                                 <state key="normal" title="ADD TASK">
-                                    <color key="titleColor" red="0.086274509799999996" green="0.27058823529999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.51640427112579346" green="0.087836243212223053" blue="0.37513166666030884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="addTaskButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O9K-M2-yiG"/>
@@ -170,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="324" y="124"/>
+            <point key="canvasLocation" x="324" y="123.68815592203899"/>
         </scene>
         <!--View Controller List-->
         <scene sceneID="xJZ-rn-q61">
@@ -245,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkC-bP-JJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="106"/>
+            <point key="canvasLocation" x="1082" y="124"/>
         </scene>
     </scenes>
     <resources>
