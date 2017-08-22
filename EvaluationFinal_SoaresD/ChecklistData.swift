@@ -49,7 +49,10 @@ func parseDict() {
 //------------------------------------------
     
     func resetData() {
-        lesNotes = [ : ]
+             
+        lesNotes.removeAll(keepingCapacity: false)
+        
         saveUserDefaults()
+        
     }
 }
