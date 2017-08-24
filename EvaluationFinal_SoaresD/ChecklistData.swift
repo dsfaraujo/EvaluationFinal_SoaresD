@@ -50,8 +50,9 @@ func parseDict() {
     
     func resetData() {
              
-        lesNotes.removeAll(keepingCapacity: false)
-        
+       
+        parseDict()
+        manageUserDefaults()
         saveUserDefaults()
         
     }

@@ -191,24 +191,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         }
                        self.obj.ajouterUneNote(nom: key, val: false)
                         index+=1
+                        
+                        
                     }
                     print(dict)
                     self.obj.lesNotes = dict
+                    
                     self.obj.saveUserDefaults()
                     self.obj.parseDict()
                     self.tableView.reloadData()
                     self.resetFields()
-                    
-                    
                 }
+               
+
                     catch {
                     print("Erreur Json: \(error)")
                 }
             }
         }
-        //obj.saveUserDefaults()
-       // obj.parseDict()
-        //self.tableView.reloadData()
         task.resume()
         //tableView.reloadData()
         
@@ -224,10 +224,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func resetButton(_ sender: UIButton) {
         
     
-        var refreshAlert = UIAlertController(title: "Reset data?", message: "All data will be lost.", preferredStyle: UIAlertControllerStyle.alert)
+        var refreshAlert = UIAlertController(title: "Reset Data", message: "Are you sure you want to reset all selections?", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            self.obj.resetData()
+            
+            var dict : [String: Bool] = [ : ]
+            var keys: [String] = []
+            var values: [Bool] = []
+            for (k, v) in self.obj.lesNotes {
+                keys.append(k)
+                if v == false{
+                    values.append(false)
+                }
+                else{
+                    values.append(false)
+                }
+            }
+            var index = 0
+            for key in keys {
+                for _ in values{
+                    dict[key] = values[index]
+                }
+                self.obj.ajouterUneNote(nom: key, val: false)
+                index+=1
+            }
+            print(dict)
+            self.obj.lesNotes = dict
+
             self.obj.saveUserDefaults()
             self.obj.parseDict()
             self.tableView.reloadData()
