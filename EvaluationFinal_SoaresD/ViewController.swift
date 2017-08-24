@@ -8,16 +8,18 @@
 //-----------------------------------------
 import UIKit
 //-----------------------------------------
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+//classe pour le viewController
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     //-----------------------------------------
     @IBOutlet weak var addTaskField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     var obj = ChecklistData()
-   
     //-----------------------------------------
+    //load view principale
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.addTaskField.delegate = self
     }
     //-----------------------------------------
     override func didReceiveMemoryWarning() {
@@ -25,6 +27,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     //-----------------------------------------
+    //button d'ajouter une note
     @IBAction func addTaskButton(_ sender: UIButton){
         obj.ajouterUneNote(nom: addTaskField.text!, val: false)
         
@@ -35,24 +38,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         hideKeyboard()
     }
     //-----------------------------------------
+    //cacher clavier
     func hideKeyboard() {
         addTaskField.resignFirstResponder()
     }
     //-----------------------------------------
+    //effacer texte dans textField
     func resetFields() {
         addTaskField.text = ""
     }
     
     //------------------------------------------
+    //Function d'initialization de la tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
         return obj.keys.count
     }
     //------------------------------------------
+    //Function d'initialization des celules dans la tableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
         let a = obj.keys[indexPath.row]
-        let b = obj.values[indexPath.row]
+        _ = obj.values[indexPath.row]
         let s = "\(a) "
         cell.textLabel!.text = s
         cell.textLabel?.textColor = UIColor.black
@@ -60,15 +67,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     //------------------------------------------
+    //Function pour permetre de selectionner une rangée dans la tableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.darkGray
         if obj.lesNotes[obj.keys[indexPath.row]]! == false{
-             obj.lesNotes[obj.keys[indexPath.row]] = true
+            obj.lesNotes[obj.keys[indexPath.row]] = true
             //print(obj.lesNotes[obj.keys[indexPath.row]])
         } else {
-             obj.lesNotes[obj.keys[indexPath.row]] = false
+            obj.lesNotes[obj.keys[indexPath.row]] = false
         }
         obj.parseDict()
         print(obj.values)
@@ -76,6 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     //------------------------------------------
+    //Function d'initialization de le style de la tableView
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             obj.lesNotes[obj.keys[indexPath.row]] = nil
@@ -84,9 +93,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
     }
+    //-----------------------------------------
+    ////Function d'initialization des couleures pour las rangées selectionées dans la tableView
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if obj.values[indexPath.row]  {
-            cell.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.3, green: 1.0, blue: 0.4, alpha: 0.8)
         }
     }
     //------------------------------------------
@@ -102,11 +113,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     //------------------------------------------
+    //Button pour sauvegarder le fishier php
     @IBAction func sabeButton(_ sender: UIButton) {
         print(obj.lesNotes)
         let dictionary = obj.lesNotes
-        var urlToSend = "http://localhost/dashboard/soares/json_php/add.php?json=["
-        //var urlToSend = "http://localhost/dashboard/geneau/poo2/add.php?json=["
+        //var urlToSend = "http://localhost/dashboard/soares/json_php/add.php?json=["
+        var urlToSend = "http://localhost/dashboard/geneau/poo2/add.php?json=["
         var counter = 0
         
         let total = dictionary.count
@@ -120,8 +132,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         urlToSend += "]"
-        
-        
         let session = URLSession.shared
         let urlString = urlToSend
         let url = NSURL(string: urlString)
@@ -132,7 +142,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dataTask.resume()
         obj.saveUserDefaults()
         obj.parseDict()
-        
         // create the alert
         let alert = UIAlertController(title: "Saved", message: "Your tasks were successfully saved", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -141,19 +150,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
-   
-
     }
-
     
     func replaceChars(originalStr: String, what: String, byWhat: String) -> String {
         return originalStr.replacingOccurrences(of: what, with: byWhat)
     }
-    
     //------------------------------------------
+    //load json dans l'application
     @IBAction func loadButton(_ sender: UIButton) {
-        let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/soares/json_php/data.json")!
-        //let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/geneau/poo2/data.json")!
+        //let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/soares/json_php/data.json")!
+        let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/geneau/poo2/data.json")!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url:
             requestURL as URL)
         let session = URLSession.shared
@@ -170,8 +176,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     var json: Any? = nil
                     json = try JSONSerialization.jsonObject(with:
                         data!, options:.allowFragments)
-                    print(json)
-                    
+                   // print(json)
                     var dict : [String: Bool] = [ : ]
                     var keys: [String] = []
                     var values: [Bool] = []
@@ -187,9 +192,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     var index = 0
                     for key in keys {
                         for _ in values{
-                        dict[key] = values[index]
+                            dict[key] = values[index]
                         }
-                       self.obj.ajouterUneNote(nom: key, val: false)
+                        self.obj.ajouterUneNote(nom: key, val: false)
                         index+=1
                         
                         
@@ -202,29 +207,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.tableView.reloadData()
                     self.resetFields()
                 }
-               
-
-                    catch {
+                    
+                    
+                catch {
                     print("Erreur Json: \(error)")
                 }
             }
         }
         task.resume()
-        //tableView.reloadData()
-        
-        
-        //self.viewDidLoad()
-        
-        print(obj.lesNotes)
-       
-
+        //print(obj.lesNotes)
     }
-  
-
+    //-----------------------------------------
+    //Reset button action
     @IBAction func resetButton(_ sender: UIButton) {
         
-    
-        var refreshAlert = UIAlertController(title: "Reset Data", message: "Are you sure you want to reset all selections?", preferredStyle: UIAlertControllerStyle.alert)
+        let refreshAlert = UIAlertController(title: "Reset Data", message: "Are you sure you want to reset all selections?", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             
@@ -250,7 +247,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             print(dict)
             self.obj.lesNotes = dict
-
+            
             self.obj.saveUserDefaults()
             self.obj.parseDict()
             self.tableView.reloadData()
@@ -263,10 +260,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         present(refreshAlert, animated: true, completion: nil)
         
-        
-        
     }
-    
-    
-    
+    //-----------------------------------------
 }

@@ -36,7 +36,6 @@
 		9B1B394C1F463C03003179C8 /* Icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1B392F1F463C03003179C8 /* Icon-256.png */; };
 		9B1B394D1F463C03003179C8 /* Icon-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1B39301F463C03003179C8 /* Icon-512.png */; };
 		9B1B394E1F463C03003179C8 /* Icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1B39311F463C03003179C8 /* Icon-1024.png */; };
-		9B1F7F961F4390E70089286E /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F7F951F4390E70089286E /* Singleton.swift */; };
 		9B5A32081F3CE78800CAC48E /* ViewControllerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5A32071F3CE78800CAC48E /* ViewControllerList.swift */; };
 		9B77FC0D1F1D5559008BAC33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77FC0C1F1D5559008BAC33 /* AppDelegate.swift */; };
 		9B77FC0F1F1D5559008BAC33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77FC0E1F1D5559008BAC33 /* ViewController.swift */; };
@@ -81,7 +80,6 @@
 		9B1B392F1F463C03003179C8 /* Icon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-256.png"; path = "Images/icons/Icon-256.png"; sourceTree = "<group>"; };
 		9B1B39301F463C03003179C8 /* Icon-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-512.png"; path = "Images/icons/Icon-512.png"; sourceTree = "<group>"; };
 		9B1B39311F463C03003179C8 /* Icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-1024.png"; path = "Images/icons/Icon-1024.png"; sourceTree = "<group>"; };
-		9B1F7F951F4390E70089286E /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		9B5A32071F3CE78800CAC48E /* ViewControllerList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerList.swift; sourceTree = "<group>"; };
 		9B77FC091F1D5559008BAC33 /* EvaluationFinal_SoaresD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EvaluationFinal_SoaresD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B77FC0C1F1D5559008BAC33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 				9BCCE46C1F1EA14C0069D76F /* Fonts */,
 				9B77FC201F1D5D5E008BAC33 /* Images */,
 				9B77FC0C1F1D5559008BAC33 /* AppDelegate.swift */,
-				9B1F7F951F4390E70089286E /* Singleton.swift */,
 				9B77FC0E1F1D5559008BAC33 /* ViewController.swift */,
 				9B5A32071F3CE78800CAC48E /* ViewControllerList.swift */,
 				9BCCE46F1F1EAC830069D76F /* ChecklistData.swift */,
@@ -309,7 +306,6 @@
 				9B77FC0F1F1D5559008BAC33 /* ViewController.swift in Sources */,
 				9B77FC0D1F1D5559008BAC33 /* AppDelegate.swift in Sources */,
 				9B5A32081F3CE78800CAC48E /* ViewControllerList.swift in Sources */,
-				9B1F7F961F4390E70089286E /* Singleton.swift in Sources */,
 				9BCCE4701F1EAC830069D76F /* ChecklistData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

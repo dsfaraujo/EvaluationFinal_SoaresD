@@ -5,18 +5,20 @@
 //  Created by eleves on 2017-08-10.
 //  Copyright © 2017 Diana. All rights reserved.
 //
-
+//-----------------------------------------
 import UIKit
-
+//-----------------------------------------
+//classe pour le viewControllerList
 class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    //-----------------------------------------
     var dict : [String: Bool] = [ : ]
     var keys: [String] = []
     var values: [Bool] = []
-    
+    //-----------------------------------------
     @IBOutlet weak var tableView: UITableView!
     var obj = ChecklistData()
-    
-    
+    //-----------------------------------------
+    //load view
     override func viewDidLoad() {
         super.viewDidLoad()
         for (k, v) in self.obj.lesNotes {
@@ -25,8 +27,6 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
                 keys.append(k)
                 values.append(true)
             }
-            
-            
         }
         var index = 0
         for key in keys {
@@ -36,9 +36,6 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
             self.obj.ajouterUneNote(nom: key, val: false)
             index+=1
         }
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     //-----------------------------------------
     override func didReceiveMemoryWarning() {
@@ -46,11 +43,13 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     //------------------------------------------
+    //Function d'initialization de la tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
         return dict.count
     }
     //------------------------------------------
+    //Function d'initialization des rangées dans la tableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
         //let a = obj.keys[indexPath.row]
@@ -59,18 +58,8 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
-    //---------------------
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
-        selectedCell.contentView.backgroundColor = UIColor.darkGray
-        if obj.lesNotes[obj.keys[indexPath.row]]! == true {
-            print(obj.values)
-        }
-     
-        tableView.reloadData()
-    }*/
     //------------------------------------------
+    //Function d'edition de la tableView
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             
@@ -81,5 +70,6 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
+    //-----------------------------------------
     
 }
