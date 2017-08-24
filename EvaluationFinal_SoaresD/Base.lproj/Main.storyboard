@@ -31,6 +31,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pg1.png" translatesAutoresizingMaskIntoConstraints="NO" id="gmp-kj-0Te">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.90588235294117647" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="i2b-XP-rmL"/>
                                     <constraint firstAttribute="width" secondItem="gmp-kj-0Te" secondAttribute="height" multiplier="375:667" id="wWf-BZ-aom"/>

@@ -9,13 +9,34 @@
 import UIKit
 
 class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewDataSource{
-
+    var dict : [String: Bool] = [ : ]
+    var keys: [String] = []
+    var values: [Bool] = []
+    
     @IBOutlet weak var tableView: UITableView!
     var obj = ChecklistData()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        for (k, v) in self.obj.lesNotes {
+            //keys.append(k)
+            if v == true{
+                keys.append(k)
+                values.append(true)
+            }
+            
+            
+        }
+        var index = 0
+        for key in keys {
+            for _ in values{
+                dict[key] = values[index]
+            }
+            self.obj.ajouterUneNote(nom: key, val: false)
+            index+=1
+        }
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -27,20 +48,16 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     //------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
-        return obj.keys.count
+        return dict.count
     }
     //------------------------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
-        let a = obj.keys[indexPath.row]
-        let b = obj.values[indexPath.row]
-        if b == true{
-            let s = "\(a) "
-            cell.textLabel!.text = s
-            cell.textLabel?.textColor = UIColor.black
-            cell.backgroundColor = UIColor.clear
-        }
-       return cell
+        //let a = obj.keys[indexPath.row]
+        //let b = obj.values[indexPath.row]
+        cell.textLabel?.text = Array(dict.keys)[indexPath.row]
+        
+        return cell
     }
     //---------------------
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
